@@ -1,0 +1,14 @@
+package com.learnGUI
+
+import
+
+import
+
+public class Main{
+    
+    // JButton = a button that performs an action when clicked on
+
+    MyFrame frame = new MyFrame();
+      //can optionally just use   new MyFrame();  since we aren't going to do anything
+          with this 
+}
