@@ -1,0 +1,49 @@
+package com.learnGUI
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
+
+import java.awt.Color;
+import java.awt.Font;
+
+public class Main{
+  
+    //JLabel = a GUI display area for a string of text, an image, or both
+
+    ImageIcon image = new ImageIcon("dude.png");
+    Border border = BorderFactory.creatLineBorder(Color.green, 3); //set border color and width
+
+    JLabel label = new JLabel(); //create a label
+    label.setText("Bro, do you even code?"); //set text of label
+      //optional: you can initialize like - new JLabel("Bro, do you even code?");
+    label.setIcon(image);
+    label.setHorizontalTextPosition(JLabel.CENTER); //set text LEFT, CENTER, RIGHT of imageIcon
+    label.setVerticalTextPosition(JLabel.TOP); //set text TOP, CENTER, BOTTOM of imageicon
+    label.setForeground(new Color(0, 50, 70)); //set color of text
+    label.setFont(new Font("MV Boli", Font.PLAIN, 20)); //set text type, font feature(bold, italic), font size
+    label.setIconTextGap(-25); //set gap of text to image
+    label.setBackgroun(Color.black); //set background color
+    label.setOpaque(true); //display backgroudn color
+    label.setBorder(border); //display border
+    label.setVerticalAlignment(JLabel.CENTER); //set vertical position of icon+text within label TOP, CENTER, BOTTOM
+    label.setHorizontalAlignment(JLabel.CENTER); //set horizontal position of icon+text within label LEFT, CENTER, RIGHT
+    label.setBounds(0, 0, 250, 250); //sets label bounds using (x, y, width, height);
+           //set x,y position within frame as well as dimensions
+      
+
+    JFrame frame = new JFrame();
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(500, 500);
+    frame.setLayout(null); //default is set to borderlayout, when choosing null you need to set the bounds for the label
+    frame.setVisible(true);
+    frame.add(label);
+
+    //optional
+      //frame.pack(); //fits the label and image to the full size of the window
+     //make sure to use this last. add all other components first or this won't work.
+
+
+}
