@@ -1,0 +1,42 @@
+package com.learnGUI
+
+import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
+
+public class Main{
+
+    // JOptionPane = pop up a standard dialog box that prompts users for a value
+    //               or informs them of something.
+
+    JOptionPane.showMessageDialog(null, "This is some useless info", "Title", JOptionPane.PLAIN_MESSAGE);
+         //                       (parent component, message, title, message type)
+
+    JOptionPane.showMessageDialog(null, "More useless info", "Title", JOptionPane.INFORMATION_MESSAGE);
+    JOptionPane.showMessageDialog(null, "Want more info?", "Title", JOptionPane.QUESTION_MESSAGE);
+    JOptionPane.showMessageDialog(null, "Your computer has a VIRUS!!", "Title", JOptionPane.WARNING_MESSAGE);  //can put this in a while loop   while(true){}  runs forever mwhaahaha!!
+    JOptionPane.showMessageDialog(null, "Too many cats clogged up the line!", "Title", JOptionPane.ERROR_MESSAGE);
+
+    JOptionPane.showConfirmDialog(null, "do you even code?", "This is my title", JOptionPane.YES_NO_CANCEL_OPTION);  // same as before but the last setting is for message option
+      //if you put this in a system.out.print it will give -1(exit without answering), 0(yes), 1(no), 2(cancel)
+      // you can store that whole line in a variable (int) and depending on the number output, 
+      // your code reacts differently to each option.
+      // int answer = JOptionPane.showConfirmDialog(null, "do you even code?", "This is my title", JOptionPane.YES_NO_CANCEL_OPTION);
+    
+    JOptionPane.showInputDialog("What is your name?");
+    //String name = JOptionPane.showInputDialog("What is your name?");
+    //sysout("Hello, " + name);
+
+  //JOptionPane.showOptionDialog(parent Component, message, title, optionType(buttons), messageType, icon, options, initialValue(what is initially selected);
+
+     String[] responses = {"No, you're awesome!", "Thank you!", "*blush*"};
+     ImageIcon icon = new ImageIcon("filepath"); //filepath can be smile.png or something like that
+     JOptionPane.showOptionDialog(
+               null,
+               "You are awesome!",
+               "Secret Message",
+               JOptionPane.YES_NO_CANCEL_OPTION,
+               JOptionPane.INFORMATION_MESSAGE,
+               icon,    //when you add a custom image icon, it replaces the messageType icon
+               responses,
+               0);  
+}
