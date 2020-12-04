@@ -1,0 +1,47 @@
+package com.learnGUI
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class MyFrame extends JFrame implements ActionListener{
+
+    ComboBox comboBox;
+
+    MyFrame(){
+
+       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       this.setLayout(new FlowLayout());
+
+      // A note:
+      //  in order to store primitive types you have to use a wrapper class. ex. to store int use Integer[].
+
+       String[] animals = {"dog", "monkey", "otter"};
+
+       comboBox = new ComboBox(animals);
+       comboBox.addActionListener(this);
+
+   //good to know stuff below
+       //comboBox.setEditable(true);   //you can edit the dropdown within the program
+       //System.out.println(comboBox.getItemCount());   //shows the number of values in the box
+       //comboBox.addItem("horse");    //add item to the mix
+       //comboBox.insertItemAt("pig", 0);  //inserts an item into the mix at a certain point(index)
+       //comboBox.setSelectedIndex(0);     //sets initial selection at startup to a certain index
+       //comboBox.removeItem("cat");     //removes that specific item
+       //comboBox.removeItemAt(0);   //removes any item at the specified position
+       comboBox.removeAllItems();    //removes all items!
+     
+       this.add(comboBox);
+       this.pack();
+       this.setVisible(true);
+    }
+
+   @Override
+     public void actionPerformed(ActionEvent e){
+           if(e.getSource() == comboBox){
+               //System.out.println(comboBox.getSelectedItem());  //returns the name of animal
+               System.out.println(comboBox.getSelectedIndex());   //returns number index of animal
+           }
+     }
+
+}
