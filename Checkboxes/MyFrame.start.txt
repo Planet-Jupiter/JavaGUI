@@ -1,0 +1,56 @@
+package com.learnGUI
+
+import javax.swing.JFrame;
+import javax.swing.JCheckBox;
+import javax.swing.JButton;
+import javax.swing.ImageIcon;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Color;
+
+public class MyFrame extends JFrame implements ActionListener{
+
+     JCheckBox checkBox;
+     JButton button;
+     //ImageIcon xIcon;       optional
+     //ImageIcon checkIcon;   optional
+
+     MyFrame(){
+
+         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         this.setLayout(new FlowLayout());
+
+         button = new JButton();
+         button.setText("Submit");
+         button.addActionListener(this);
+
+         //xIcon = new ImageIcon("X.png");
+         //checkIcon = new ImageIcon("checkmark.png");
+
+         checkBox = new JCheckBox();
+         checkBox.setText("I'm not a robot");
+         checkBox.setFocusable(false);       // gets rid of the annoying border box
+         checkBox.setFont(new Font("Consolas", Font.PLAIN,35));
+         checkBox.setIcon(xIcon);   //used when checkbox is deselected.
+         checkBox.setSelectedIcon(checkIcon);   //used when checkbox is selected
+
+         this.add(button);
+         this.add(checkBox);
+         this.pack();
+         this.setVisible(true);
+
+     }
+
+
+   @Override
+     public void actionPerformed(ActionEvent e){
+
+         if(e.getSource() == button){
+             System.out.println(checkBox.isSelected());
+         }
+
+     }
+}
