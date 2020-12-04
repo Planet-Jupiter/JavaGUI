@@ -1,0 +1,56 @@
+package com.learnGUI
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class MyFrame extends JFrame implements ActionListener{
+
+      JRadioButton pizzaButton;
+      JRadioButton hamburgerButton;
+      JRadioButton hotdogButton;
+      ButtonGroup group;
+      //ImageIcon pizzaIcon;
+ 
+      MyFrame(){
+
+           this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+           this.setLayout(new FlowLayout());
+
+           pizzaIcon = new ImageIcon("pizza.png");
+
+           pizzaButton = new JRadioButton("Pizza");
+           pizzaButton.addActionListener(this);
+           pizzaButton.setIcon(pizzaButton);
+
+           hamburgerButton = new JRadioButton("Hamburger");
+           hamburgerButton.addActionListener(this);
+
+           hotdogButton = new JRadioButton("Hotdog");   
+           hotdogButton.addActionListener(this);  
+
+           group = new ButtonGroup();
+           group.add(pizzaButton);
+           group.add(hamburgerButton);       
+           group.add(hotdogButton);
+
+           this.add(hotdogButton);
+           this.add(hamburgerButton);
+           this.add(pizzaButton);
+           this.pack();
+           this.setVisible(true);
+      }      
+    
+    @Override
+       public void actionPerformed(ActionEvent e){
+           if(e.getSource() == pizzaButton){
+               System.out.println("You ordered pizza!");
+           } else if(e.getSource() == hamburgerButton){
+               System.out.println("You ordered a hamburger!");
+           } else if(e.getSource() == hotdogButton) {
+               System.out.println("You ordered a hotdog!");
+           }
+
+       }
+
+}
