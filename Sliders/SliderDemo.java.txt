@@ -1,0 +1,51 @@
+package com.learnGUI
+
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.event.*;    //this is for the ChangeListener. (ActionListener uses awt.event)
+
+public class SliderDemo implements ChangeListener{
+
+   JFrame frame;
+   JPanel panel;
+   JLabel label;
+   JSlider slider;
+
+   SliderDemo(){
+
+      panel = new JPanel();
+      label = new JLabel();
+      slider = new JSlider(0,100,50);        //JSlider(min, max, starting point)
+    
+      slider.setPreferredSize(new Dimension(400,200));
+
+      slider.setPaintTicks(true);      //makes those little tick marks on the slider
+      slider.setMinorTickSpacing(10);  //how much to increment the ticks based on the min/max of JSlider
+
+      slider.setPaintTrack(true);
+      slider.setMajorTickSpacing(25);
+
+      slider.setPaintLabels(true);     //will put numbers next to your major ticks
+      slider.setFont(new Font("MV Boli", Font.PLAIN, 15));
+
+      slider.setOrientation(SwingConstants.VERTICAL);    //can also use HORIZONTAL
+      slider.addChangeListener(this);      
+
+      label.setText("°C = " + slider.getValue());  // will get the value of whereever the slider is positioned     
+      label.setFont(new Font("MV Boli", Font.PLAIN, 25));
+
+      panel.add(slider);
+      panel.add(label);
+      frame.add(panel);
+      frame = new JFrame("Slider Demo");
+
+      frame.setSize(420,420);
+      frame.setVisible(true);
+   }
+
+  @Override
+    public void stateChanged(ChangeEvent e){
+         label.setFont(new Font("MV Boli", Font.PLAIN, 25));
+    }
+
+}
