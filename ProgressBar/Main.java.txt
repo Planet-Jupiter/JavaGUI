@@ -1,0 +1,15 @@
+package com.learnGUI
+
+public class Main{
+
+    // Progress Bar = visual aid to let the user know that an operation
+    //                is progressing
+
+    public static void main(String[] args){
+
+        ProgressBarDemo progressBar = new ProgressBarDemo();
+
+    }
+
+
+}

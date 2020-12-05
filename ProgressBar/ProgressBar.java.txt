@@ -1,0 +1,51 @@
+package com.learnGUI
+
+import java.awt.*;
+import javax.swing.*;
+
+public class ProgressBarDemo{
+
+    JFrame frame;
+    JProgressBar bar;
+
+    ProgressBarDemo(){
+
+       frame = new JFrame();
+       bar = new JProgressBar();    //can set (min,max) here at inital setup
+
+       bar.setValue(0);            //sets the percentage value to 0%
+       bar.setBounds(0,0,420,50);
+       bar.setStringPainted(true);  //shows in the bar the percentage completed
+       bar.setFont(new Font("MV Boli",Font.BOLD, 25));
+       bar.setForeground(Color.red);
+       bar.setBackground(Color.black);
+
+       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       frame.setSize(420,420);
+
+       frame.setLayout(null);
+       frame.setVisible(true);
+
+       fill();      //method to increment bar.setValue();
+    }
+
+    public void fill(){
+        int counter = 0;
+
+            //this can also go backwards should you feel inclined
+
+        while(counter <= 100){
+           bar.setValue(counter);   // can be linked to a task
+           try{
+              Thread.sleep(1000);         //pauses the loop according to milliseconds
+           } catch (InterruptedException e){
+              e.printStackTrace();
+           }
+           counter+=5;
+        }
+        
+        bar.setString("Done! ^_^");
+
+    }
+
+}
