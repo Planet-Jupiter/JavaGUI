@@ -1,0 +1,79 @@
+package com.learnGUI
+
+import java.awt.FlowLayout;
+import javax.swing.*;
+import java.awt.event.*;
+
+public class MyFrame extends JFrame implements ActionListener{
+
+        JMenuBar menuBar;
+        JMenu fileMenu;
+        JMenu editMenu;
+        JMenu helpMenu;
+        JMenuItem loadItem;
+        JMenuItem saveItem;
+        JMenuItem exitItem;
+        ImageIcon loadIcon;
+        ImageIcon saveIcon;
+        ImageIcon exitIcon;
+
+    MyFrame(){
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(500,500);
+        this.setLayout(new FlowLayout());
+
+        loadIcon = new ImageIcon("load.png"); //can give images to menu items and such
+        saveIcon = new ImageIcon("save.png");
+        exitIcon = new ImageIcon("exit.png");
+
+        menuBar = new JMenuBar();         //sets up the menu tab
+        
+        fileMenu = new JMenu("File");        //add to menuBar to see the bar come to life
+        editMenu = new JMenu("Edit");
+        helpMenu = new JMenu("Help");
+
+        loadItem = new JMenuItem("Load");    //you add these to whichever JMenu you want
+        saveItem = new JMenuItem("Save");
+        exitItem = new JMenuItem("Exit");
+
+        loadItem.setIcon(loadIcon);
+        saveItem.setIcon(saveIcon);
+        exitItem.setIcon(exitIcon);
+        
+        loadItem.addActionListener(this);    //MyFrame implements the ActionListener, so you can use 'this'
+        saveItem.addActionListener(this);
+        exitItem.addActionListener(this);    //add actionlistener to each menuitem
+
+        loadItem.setMnemonic(KeyEvent.VK_L);  //setting key shortcuts for the items
+        saveItem.setMnemonic(KeyEvent.VK_S);  // s for save
+        exitItem.setMnemonic(KeyEvent.VK_E);  
+
+        fileMenu.setMnemonic(KeyEvent.VK_F);  // Alt + f for file menu
+        editMenu.setMnemonic(KeyEvent.VK_E);  // Alt + e for edit menu
+        helpMenu.setMnemonic(KeyEvent.VK_H);  // Alt + h for help menu
+
+        fileMenu.add(loadItem);
+        fileMenu.add(saveItem);
+        fileMenu.add(exitItem);
+
+        menuBar.add(fileMenu);
+        menuBar.add(editMenu);
+        menuBar.add(helpMenu);
+
+        this.setJMenuBar(menuBar);
+        this.setVisible(true);
+    }
+
+   @Override
+      public void actionPerformed(ActionEvent e){
+         if(e.getSource() == loadItem){
+            System.out.println("**blarp beep** you loaded an item");
+         } else if(e.getSource() == saveItem){
+            System.out.println("**bloop beep** you saved an item");
+         } else if(e.getSource() == exitItem){
+            System.exit(0);     //exits the system
+         }
+
+
+      }
+}
