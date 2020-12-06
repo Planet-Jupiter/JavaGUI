@@ -1,0 +1,71 @@
+package com.learnGUI
+
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class MyImageFrame extends JFrame implements MouseListener{
+
+    JLabel label;
+    ImageIcon smile;
+    ImageIcon sleep;
+    ImageIcon drool;
+    ImageIcon angry;
+
+    MyImageFrame(){
+       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       this.setSize(500,500);
+       this.setLayout(new FlowLayout());
+
+       label = new JLabel();
+       label.setIcon(sleep);
+       label.addMouseListener(this);
+
+       smile = new ImageIcon("aliensmile.png");
+       sleep = new ImageIcon("aliensleep.png");
+       drool = new ImageIcon("aliendrool.png");
+       angry = new ImageIcon("alienangry.png");
+
+       this.add(label);
+       this.pack();
+       this.setLocationRelativeTo(null);      //sets your frame in 
+       this.setVisible(true);
+    }
+
+   @Override
+     public void mouseClicked(MouseEvent e){
+        //Invoked when the mouse button has been clicked(pressed and released) on a component
+
+        label.setBackground(Color.blue);   //you can try this out with all mouse events
+     }
+
+   @Override
+     public void mousePressed(MouseEvent e){
+        //Invoked when a mouse button has been pressed on a component
+          label.setIcon(angry);
+     }
+
+   @Override
+     public void mouseReleased(MouseEvent e){
+        //Invoked when a mouse button has been released on a component
+           label.setIcon(drool);
+     }
+
+   @Override
+     public void mouseEntered(MouseEvent e){
+       //Invoked when the mouse enters the area of a component
+          label.setIcon(smile);
+     }
+
+   @Override
+     public void mouseExited(MouseEvent e){
+       //Invoked when the mouse exits the area of a component
+          label.setIcon(sleep);
+     }   
+
+  // Remember that adding the MouseListener to a component can have a huge change!!
+  // this.addMouseListener()  will make the entire frame and all components in it react to the mouse event
+  // label.addMouseListener() will make just the label and not the frame sensitive to mouse events
+
+}
