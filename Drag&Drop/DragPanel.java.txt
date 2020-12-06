@@ -1,0 +1,56 @@
+package com.learnGUI
+
+import javax.swing.JPanel;
+import javax.swing.ImageIcon;
+
+import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseMotionAdapter;
+import java.awt.Point;
+
+public class DragPanel extends JPanel{
+
+     ImageIcon image = new ImageIcon("cloud.png");
+     final int WIDTH = image.getIconWidth();
+     final int HEIGHT = image.getIconHeight();
+     Point imageCorner;
+     Point prevPt;
+
+     DragPanel(){
+
+        imageCorner = new Point(0,0);   //top left corner
+        ClickListener clickListener = new ClickListener();
+        DragListener dragListener = new DragListener();
+        this.addMouseListener(clickListener);
+        this.addMouseMotionListener(dragListener);
+     }
+
+     public void paintComponent(Graphics g){
+          //repaints the image after you move it to a new position
+        super.paintComponent(g);
+        image.paintIcon(this, g, (int)imageCorner.getX(), (int)imageCorner.getY()    //(DragPanel, g(graphics), x, y)
+
+     }
+
+     private class ClickListener extends MouseAdapter{
+          
+           public void mousePressed(MouseEvent e){
+               prevPt = e.getPoint();
+           }
+     }
+  
+     private class DragListener extends MouseMotionAdapter{
+        
+          Point currentPt = e.getPoint();
+
+          imageCorner.translate(
+                       
+                         (int)(currentPt.getX() - prevPt.getX()),
+                         (int)(currentPt.getY() - prevPt.getY())
+                 );
+
+                 prevPt = currentPt;
+                 repaint();
+     }
+
+}
